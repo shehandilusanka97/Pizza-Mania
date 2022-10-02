@@ -44,8 +44,9 @@ export default function Hero() {
             <Image src={Pizza1} alt="" objectFit="cover" layout="intrinsic" />
           </div>
           <div className={css.details}>
-            <span>Mozzarella Cheese Pizza</span>
-            <span>Rs.1500.00</span>
+            <span>Sausage Pizza</span>
+            <span>
+                <span style={{color:"var(--themeRed)"}}>Rs. </span>1500.00</span>
           </div>
         </div>
       </div>
