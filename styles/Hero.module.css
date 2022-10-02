@@ -35,3 +35,60 @@
 .btn{
     padding: 1rem 2.5rem;
 }
+.right{
+    position: relative;  
+}
+.imageContainer{
+    width: 38rem;
+    position: absolute;
+    top: -5rem;
+    left: 3rem;
+   
+}
+.contactus{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width:max-content;
+    padding: 1rem;
+    border-radius: 5rem;
+    top: 6rem;
+    left: -3rem;
+    gap: 1rem;
+    border-color: white;
+    box-shadow: var(--shadow);
+    color: var(--themeRed);
+}
+
+.contactus>div{
+    background-color: rgb(59, 208, 59);
+    border-radius: 50%;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+}
+.contactus:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: var(--themeRed);
+    color: white;
+}
+
+.Pizza{
+    display: flex;
+    gap:1rem;
+    background-color: white;
+    box-shadow: var(--shadow);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.Pizza>:nth-child(1){
+    width: 6rem;
+    height: 4rem;
+    overflow: hidden;
+    
+}

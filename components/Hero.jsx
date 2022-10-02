@@ -1,7 +1,9 @@
 import css from "../styles/Hero.module.css";
 import Image from "next/image";
 import Cherry from "../assets/Cherry.png";
-import HeroImage from '../assets/HeroImage.png'
+import HeroImage from "../assets/HeroImage.png";
+import { UilPhone } from "@iconscout/react-unicons";
+import Pizza1 from '../assets/p1.jpg'
 export default function Hero() {
   return (
     <div className={css.container}>
@@ -21,18 +23,31 @@ export default function Hero() {
           </span>
         </div>
         <span className={css.miniText}>
-            Our Mission is to filling your tummy with delicious pizza and with fast delivery
+          Our Mission is to filling your tummy with delicious pizza and with
+          fast delivery
         </span>
-        <button className={`btn ${css.btn}`}>
-            Get Started
-        </button>
+        <button className={`btn ${css.btn}`}>Get Started</button>
       </div>
       {/* right side */}
       <div className={css.right}>
         <div className={css.imageContainer}>
-            <Image src={HeroImage} alt=""/>
+          <Image src={HeroImage} alt="" layout="intrinsic" />
         </div>
-
+        <div className={css.contactus}>
+          <span>Contact us</span>
+          <div>
+            <UilPhone color="white" />
+          </div>
+        </div>
+        <div className={css.Pizza}>
+          <div>
+            <Image src={Pizza1} alt="" objectFit="cover" layout="intrinsic" />
+          </div>
+          <div className={css.details}>
+            <span>Mozzarella Cheese Pizza</span>
+            <span>Rs.1500.00</span>
+          </div>
+        </div>
       </div>
     </div>
   );
