@@ -1,3 +1,5 @@
+import { array } from "prop-types";
+
 export default{
     name:'pizza',
     title: 'pizza',
@@ -26,6 +28,17 @@ export default{
                 source:'name',
                 maxLength:90
             }
+        },
+        {
+            name:'price',
+            title:'price',
+            type: 'array',
+            of:[{type:'number'}]
+        },
+        {
+            name:'details',
+            title:'details',
+            type:'string'
         }
     ]
 }
