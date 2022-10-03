@@ -44,5 +44,13 @@
     gap: 0.5rem;
     font-size: 1.5rem;
     font-weight: bold;
-    
+
+}
+
+.ImageWrapper>span>img:hover{
+    transform: scale(1.1);
+}
+.pizza:hover{
+    cursor:pointer;
+
 }
