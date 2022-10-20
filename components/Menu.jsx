@@ -2,8 +2,8 @@ import Image from 'next/image'
 import { urlFor } from '../lib/client'
 import Link from 'next/link'
 import css from '../styles/Menu.module.css'
+
 export default function Menu({pizzas}) {
-    
     return(
         <div className={css.container}>
             <div className={css.heading}>
@@ -13,18 +13,22 @@ export default function Menu({pizzas}) {
             </div>
             {/* Pizzas  */}
             <div className={css.menu}>
-               {pizzas.map((pizzas,id)=>{
-                const src= urlFor(pizzas.image).url()
+               {pizzas.map((pizza,id)=>{
+                const src= urlFor(pizza.image).url()
                 return(
                     <div className={css.pizza} key={id}>
-                        <Link href={`./pizza/${pizzas.slug.current}`}>
+                        <Link href={`./pizza/${pizza.slug.current}`}>
+
                       <div className={css.ImageWrapper}>
-                        <Image loader={()=>src} src={src} alt=''
-                        objectFit='cover' layout='fill'/>
+
+                        <Image loader={()=>src}
+                         src={src} alt=''
+                         unoptimized={true}
+                        objectFit="cover" layout="fill"/>
                       </div>
                       </Link>
-                      <span>{pizzas.name}</span>
-                      <span> <span style={{color:'var(--themeRed)'}}>Rs</span> {pizzas.price[1]}</span>
+                      <span>{pizza.name}</span>
+                      <span> <span style={{color:'var(--themeRed)'}}>Rs</span> {pizza.price[1]}</span>
                     </div>
                 )
                })}

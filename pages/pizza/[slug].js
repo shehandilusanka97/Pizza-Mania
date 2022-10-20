@@ -2,16 +2,17 @@ import Layout from "../../components/Layout";
 import { client } from "../../lib/client";
 
 export default function Pizza({pizza}) {
+    console.log(pizza);
     return(
      <Layout>
-        <div>Hi</div>
+        <div>Pizza page</div>
      </Layout>   
     )
 } 
 
 export async function getStaticPaths(){
     const paths=await client.fetch(
-        `*[_type=="pizza"&& defined(slug.current)][].slug.current`
+        `*[_type=="pizza" && defined(slug.current)][].slug.current`
     )
     return{
         paths: paths.map((slug)=>({params:{slug}})),
@@ -21,6 +22,15 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context){
     const{slug=""} =context.params;
-    const pizza = await client.fetch()
-    `*[_type=='Pizza'&&]`
+    const pizza = await client.fetch(
+        `*[_type=='pizza'&& slug.current == ${slug}][0]`
+    );
+    return{
+        
+        props:{
+            pizza,
+        }
+
+    }
+   
 }

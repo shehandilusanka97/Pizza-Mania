@@ -1,4 +1,4 @@
-import { array } from "prop-types";
+
 
 export default{
     name:'pizza',
