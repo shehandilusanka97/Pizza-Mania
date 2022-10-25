@@ -2,9 +2,23 @@ import css from "../../styles/Pizza.module.css";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import { client, urlFor } from "../../lib/client";
+import LeftArrow from "../../assets/arrowLeft.png";
+import RightArrow from "../../assets/arrowRight.png";
+import { useState } from "react";
 
 export default function Pizza({ pizza }) {
   const src = urlFor(pizza.image).url();
+  const [size, setSize] = useState(1);
+  const [qty, setQty] = useState(1);
+
+  // Handle Qty
+  const handleQty = (type) => {
+    type === "inc"
+      ? setQty((prev) => prev + 1)
+      : qty === 1
+      ? null
+      : setQty((prev) => prev - 1);
+  };
   return (
     <Layout>
       <div className={css.container}>
@@ -20,17 +34,64 @@ export default function Pizza({ pizza }) {
         </div>
 
         {/* right side */}
-        <div className={css.size}>
-          <size>Size</size>
-          <div className={css.SizeVaraints}>
-            <div>Small</div>
-            <div>Medium</div>
-            <div>Large</div>
+        <div className={css.right}>
+          <span>{pizza.name}</span>
+          <span>{pizza.details}</span>
+
+          <span>
+            {" "}
+            <span style={{ color: "var(--themeRed)" }}>Rs.</span>
+            {pizza.price[size]}
+          </span>
+
+          <div className={css.size}>
+            <size>Size</size>
+            <div className={css.sizeVaraints}>
+              <div
+                onClick={() => setSize(0)}
+                className={size === 0 ? css.selected : ""}
+              >
+                Small
+              </div>
+              <div
+                onClick={() => setSize(1)}
+                className={size === 1 ? css.selected : ""}
+              >
+                Medium
+              </div>
+              <div
+                onClick={() => setSize(2)}
+                className={size === 2 ? css.selected : ""}
+              >
+                Large
+              </div>
+            </div>
           </div>
-        </div>
-        {/* Qty counter */}
-        <div className={css.quantity}>
-          <span>Quantity</span>
+          {/* Qty counter */}
+          <div className={css.quantity}>
+            <span>Quantity</span>
+            <div className={css.counter}>
+              <Image
+                src={LeftArrow}
+                height={20}
+                width={20}
+                objectFit="contain"
+                onClick={()=>handleQty("dec")}
+                alt=""
+              />
+              <span>{qty}</span>
+              <Image
+                src={RightArrow}
+                height={20}
+                width={20}
+                objectFit="contain"
+                onClick={()=>handleQty("inc")}
+                alt=""
+              />
+            </div>
+          </div>
+          {/* buttom  */}
+          <div className={`btn ${css.btn}`}>Add to Cart</div>
         </div>
       </div>
     </Layout>
