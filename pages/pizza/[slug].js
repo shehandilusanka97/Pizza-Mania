@@ -5,6 +5,7 @@ import { client, urlFor } from "../../lib/client";
 import LeftArrow from "../../assets/arrowLeft.png";
 import RightArrow from "../../assets/arrowRight.png";
 import { useState } from "react";
+import { useStore } from "../../store/store";
 
 export default function Pizza({ pizza }) {
   const src = urlFor(pizza.image).url();
@@ -19,6 +20,13 @@ export default function Pizza({ pizza }) {
       ? null
       : setQty((prev) => prev - 1);
   };
+
+  // Add to cart btn 
+  const addPizza=useStore((state)=>state.addPizza)
+  const addToCart=()=>{
+    addPizza({...pizza,price: pizza.price[size],quantity:qty,size:size})
+    console.log('Pizza added')
+  }
   return (
     <Layout>
       <div className={css.container}>
@@ -45,7 +53,7 @@ export default function Pizza({ pizza }) {
           </span>
 
           <div className={css.size}>
-            <size>Size</size>
+            <span>Size</span>
             <div className={css.sizeVaraints}>
               <div
                 onClick={() => setSize(0)}
@@ -91,7 +99,7 @@ export default function Pizza({ pizza }) {
             </div>
           </div>
           {/* buttom  */}
-          <div className={`btn ${css.btn}`}>Add to Cart</div>
+          <div className={`btn ${css.btn}`} onClick={addToCart}>Add to Cart</div>
         </div>
       </div>
     </Layout>
